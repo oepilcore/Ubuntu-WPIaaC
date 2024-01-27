@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-   config.vm.network "private_network", ip: "192.168.69.155"
+   config.vm.network "private_network", ip: "xxx.xxx.xxx.xxx"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -106,7 +106,7 @@ EOF
    sudo service apache2 reload
 
    mysql -u root -e 'CREATE DATABASE wordpress;'
-   mysql -u root -e 'CREATE USER wordpress@localhost IDENTIFIED BY "@dm1n69";'
+   mysql -u root -e 'CREATE USER wordpress@localhost IDENTIFIED BY "<insert-your-password-here>";'
    mysql -u root -e 'GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;'
    mysql -u root -e 'FLUSH PRIVILEGES;'
    mysql -u root -e 'quit'
@@ -115,7 +115,7 @@ EOF
    sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
    sudo -u www-data sed -i 's/database_name_here/wordpress/' /srv/www/wordpress/wp-config.php
    sudo -u www-data sed -i 's/username_here/wordpress/' /srv/www/wordpress/wp-config.php
-   sudo -u www-data sed -i 's/password_here/@dm1n69/' /srv/www/wordpress/wp-config.php
+   sudo -u www-data sed -i 's/password_here/<insert-your-password-here>/' /srv/www/wordpress/wp-config.php
    
    sudo systemctl restart mysql
    sudo systemctl restart apache2     
