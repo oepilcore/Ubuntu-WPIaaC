@@ -6,31 +6,38 @@ Ubuntu WordPress IaaC, This is just a simple vagrantfile script for you to deplo
 
 Use git clone.
 ```bash
-git clone https://github.com/oepilcore/CentOS-IaaC.git
+git clone https://github.com/oepilcore/Ubuntu-WPIaaC.git
 ```
 Copy the file to your vagrant-vms folder
 *For example mine folder was installed on drive D
 ```bash
-mv CentOS-IaaC /d/vagrant-vms/
+mv Ubuntu-WPIaaC /d/vagrant-vms/
 ```
 
 ## Usage
 
 ```bash
-cd /vagrant-vms/CentOS-IaaC
+cd /vagrant-vms/Ubuntu-WPIaaC
 vagrant up
 ```
 
 ## Note
 
-Please take note of some lines, please change these lines using your private IP
+Please take note of some lines:
+Change these lines using your private IP
 ```bash
-config.vm.network "private_network", ip: "192.168.69.25"
+config.vm.network "private_network", ip: "xxx.xxx.xxx.xxx"
 ```
 
-You can change the resource for your website on these lines. in this line, I've used tooplate to download the HTML Scripts
+Change these lines to using your DB Password
 ```bash
-wget https://www.tooplate.com/zip-templates/2109_the_card.zip
+mysql -u root -e 'CREATE USER wordpress@localhost IDENTIFIED BY "<insert your password here>";'
 ```
+
+And another line you need to replace the password that you created before with this line
+```bash
+sudo -u www-data sed -i 's/password_here/<your-password-here>/' /srv/www/wordpress/wp-config.php
+```
+
 ## Source
 [Ubuntu Install and Configure WordPress](https://discourse.ubuntu.com/t/install-and-configure-wordpress/13959)
