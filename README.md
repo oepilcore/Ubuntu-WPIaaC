@@ -1,6 +1,6 @@
 # Ubuntu-WPIaaC
 
-Ubuntu WordPress IaaC, This is just a simple vagrantfile script for you to deploy automatically Apache2, Mysql, and WordPress on your Ubunto 20.04 Box in your Vagrant-vms.
+Ubuntu WordPress IaaC, This is just a simple vagrantfile script for you to deploy automatically Apache2, Mysql, and WordPress on your Ubuntu 20.04 Box in your Vagrant-vms.
 
 ## Installation
 
